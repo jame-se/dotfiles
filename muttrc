@@ -1,0 +1,26 @@
+set include = yes
+set realname = "James Edwards"
+set from = "jedwards@saperavi.local"
+set use_from = yes
+set beep = no
+set sort = reverse-date-sent
+set delete = yes
+set nomark_old
+
+set mail_check = 2
+
+# Choose which headers to show (or not show)
+ignore *
+unignore Date To From: Subject X-Mailer Organization User-Agent Reply-to X-Operating-System
+
+bind generic j next-entry
+bind generic k previous-entry
+bind pager j next-line
+bind pager k previous-line
+
+color hdrdefault white black  # headers white on black
+color header brightgreen black ^From:  # sender's name in green
+color quoted cyan black  # quoted text in blue
+color signature red black   # signature in red
+
+macro pager \cu |urlview\n
