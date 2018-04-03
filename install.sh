@@ -2,7 +2,7 @@
 
 TMPDIR="/tmp/dotfiles"
 
-git clone git@github.com:j-e-d-w-a-r-d-s/dotfiles.git $TMPDIR
+git clone https://github.com/j-e-d-w-a-r-d-s/dotfiles.git $TMPDIR
 
 install -o `whoami` -g `id -gn` -m 0600 $TMPDIR/.cshrc ~/.cshrc
 install -o `whoami` -g `id -gn` -m 0600 $TMPDIR/.logout ~/.logout
