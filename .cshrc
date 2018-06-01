@@ -68,105 +68,100 @@ if ($?prompt) then
     bindkey -k up history-search-backward
     bindkey -k down history-search-forward
   endif
-endif
 
-# For keys that shouldn't be version controlled
-if ( -e ~/.cshrc.private ) then
-  source ~/.cshrc.private
-endif
+  # For keys that shouldn't be version controlled
+  if ( -e ~/.cshrc.private ) then
+    source ~/.cshrc.private
+  endif
 
-# OS specific aliases
-switch(`uname`)
-  case "Darwin":
-    alias top		top -s 1
-    alias la		ls -alFG
-    alias lf		ls -alFG
-    alias ll		ls -alFG
-    alias ls		ls -alFG
-  breaksw
+  # OS specific aliases
+  switch(`uname`)
+    case "Darwin":
+      alias top		top -s 1
+      alias la		ls -alFG
+      alias lf		ls -alFG
+      alias ll		ls -alFG
+      alias ls		ls -alFG
+    breaksw
 
-  case "FreeBSD":
-    alias top		top -s 1 -P
-    alias la		ls -alFG
-    alias lf		ls -alFG
-    alias ll		ls -alFG
-    alias ls		ls -alFG
+    case "FreeBSD":
+      alias top		top -s 1 -P
+      alias la		ls -alFG
+      alias lf		ls -alFG
+      alias ll		ls -alFG
+      alias ls		ls -alFG
 
-    set path = `echo $path /usr/games`
-  breaksw
+      set path = `echo $path /usr/games`
+    breaksw
 
-  case "Linux":
-    alias top		top -d 1
-    alias la		ls -alF --color=auto
-    alias lf		ls -alF --color=auto
-    alias ll		ls -alF --color=auto
-    alias ls		ls -alF --color=auto
-    alias grep		grep --color=auto
-  breaksw
+    case "Linux":
+      alias top		top -d 1
+      alias la		ls -alF --color=auto
+      alias lf		ls -alF --color=auto
+      alias ll		ls -alF --color=auto
+      alias ls		ls -alF --color=auto
+      alias grep		grep --color=auto
+    breaksw
 
-  case "OpenBSD":
-    if ( -e `which colorls`) then
-      alias la		`which colorls` -alFG
-      alias lf		`which colorls` -alFG
-      alias ll		`which colorls` -alFG
-      alias ls		`which colorls` -alFG
-    else
-      alias la          ls -alF
-      alias lf          ls -alF
-      alias ll          ls -alF
-      alias ls          ls -alF
-    endif
+    case "OpenBSD":
+      if ( -e `which colorls`) then
+        alias la	`which colorls` -alFG
+        alias lf	`which colorls` -alFG
+        alias ll	`which colorls` -alFG
+        alias ls	`which colorls` -alFG
+      else
+        alias la          ls -alF
+        alias lf          ls -alF
+        alias ll          ls -alF
+        alias ls          ls -alF
+      endif
 
-  setenv PKG_PATH	ftp://ftp.openbsd.org/pub/OpenBSD/`uname -r`/packages/`uname -m`/
-  breaksw
+    setenv PKG_PATH	ftp://ftp.openbsd.org/pub/OpenBSD/`uname -r`/packages/`uname -m`/
+    breaksw
 
-  case "SunOS":
-    if ( -e `which gls` ) then
-      alias la		`which gls` -laF --color=auto
-      alias lf		`which gls` -laF --color=auto
-      alias ll		`which gls` -laF --color=auto
-      alias ls		`which gls` -laF --color=auto
-    else
-      alias la		ls -lFA
-      alias lf		ls -lFA
-      alias ll		ls -lFA
-      alias la		ls -lFA
-    endif
+    case "SunOS":
+      if ( -e `which gls` ) then
+        alias la	`which gls` -laF --color=auto
+        alias lf	`which gls` -laF --color=auto
+        alias ll	`which gls` -laF --color=auto
+        alias ls	`which gls` -laF --color=auto
+      else
+        alias la	ls -lFA
+        alias lf	ls -lFA
+        alias ll	ls -lFA
+        alias la	ls -lFA
+      endif
 
-    if ( -e `which ggrep` ) then
-      alias grep	`which ggrep` --color=auto
-    endif
+      if ( -e `which ggrep` ) then
+        alias grep	`which ggrep` --color=auto
+      endif
 
-    if ( -e `which gnutar` ) then
-      alias tar		`which gnutar`
-    endif
-  breaksw
+      if ( -e `which gnutar` ) then
+        alias tar		`which gnutar`
+      endif
+    breaksw
 
-endsw
+  endsw
 
-# Host specific settings
-switch(`uname -n`)
-  # shell.iglou.com
-  case "shell1":
-    alias php		/usr/local/php5/bin/php
-    alias php4		/usr/local/bin/php
-    alias php5		/usr/local/php5/bin/php
-    alias mutt		/usr/local/bin/mutt1.5.21
-    alias ee		$HOME/bin/ee
+  # Host specific settings
+  switch(`uname -n`)
+    # shell.iglou.com
+    case "shell1":
+      alias php		/usr/local/php5/bin/php
+      alias php4	/usr/local/bin/php
+      alias php5	/usr/local/php5/bin/php
+      alias mutt	/usr/local/bin/mutt1.5.21
+      alias ee		$HOME/bin/ee
 
-    setenv LESS		-P'%f (%pB\%) Press SPACE to continue, Q to Quit'
-    setenv MAILREADER	/usr/local/bin/mutt1.5.21
+      setenv LESS		-P'%f (%pB\%) Press SPACE to continue, Q to Quit'
+      setenv MAILREADER	/usr/local/bin/mutt1.5.21
     
-    set path = `echo $path /usr/local/php5/bin /usr/ucb`
-  breaksw
+      set path = `echo $path /usr/local/php5/bin /usr/ucb`
+    breaksw
 
-  # work laptop
-  case "cdimac0562.local":
-    setenv GOPATH	$HOME/go
-    set path = `echo $path /usr/local/go/bin`
-  breaksw
+  endsw
 
-endsw
+  # prints timestamps, make this the last 
+  alias postcmd	date
 
-# prints timestamps, make this the last 
-alias postcmd	date
+endif
