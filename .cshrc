@@ -74,6 +74,11 @@ if ($?prompt) then
     source ~/.cshrc.private
   endif
 
+  # Host specific configurations
+  if ( -e ~/.`uname -n`.cshrc ) then
+    source ~/.`uname -n`.cshrc
+  endif
+
   # OS specific aliases
   switch(`uname`)
     case "Darwin":
