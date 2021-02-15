@@ -125,6 +125,7 @@ if ($?prompt) then
     breaksw
 
     case "SunOS":
+      setenv MACHINE_THAT_GOES_PING
       if ( -e `which gls` ) then
         alias la	`which gls` -laF --color=auto
         alias lf	`which gls` -laF --color=auto
