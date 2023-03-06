@@ -20,6 +20,7 @@ setenv BLOCKSIZE	K
 setenv LS_COLORS 	'di=96:fi=37:ln=1;96'
 setenv LSCOLORS		'gxGxFxdxcxDxdxaDcxgxgx'
 setenv SYSTEMD_PAGER
+setenv SYSTEMD_EDITOR	vi
 setenv EDITOR		vi
 setenv VISUAL		vi
 
