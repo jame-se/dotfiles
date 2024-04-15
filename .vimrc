@@ -9,3 +9,4 @@ set hls
 set incsearch
 set backspace=indent,eol,start
 set showmatch
+set re=2
